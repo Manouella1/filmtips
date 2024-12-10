@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "title": "Inception",
+    "description": "A mind-bending thriller about dreams within dreams.",
+    "genre": "Sci-Fi",
+    "rating": 9
+  },
+  {
+    "id": 2,
+    "title": "Avatar",
+    "description": "A sci-fi epic on Pandora.",
+    "genre": "Sci-Fi",
+    "rating": 8
+  }
+]

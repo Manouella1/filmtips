@@ -1,0 +1,5 @@
+<div *ngIf="movie" class="movie-detail">
+  <h2 class="detail-title">{{ movie.title }}</h2>
+  <img [src]="movie.poster" alt="{{ movie.title }}" class="movie-poster" />
+  <p class="detail-description">{{ movie.description }}</p>
+</div>

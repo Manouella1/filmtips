@@ -1,0 +1,22 @@
+.gallery {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.movie-card {
+  cursor: pointer;
+  text-align: center;
+  max-width: 200px;
+  transition: transform 0.3s;
+}
+
+.movie-card:hover {
+  transform: scale(1.05);
+}
+
+.movie-poster {
+  max-width: 100%;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}

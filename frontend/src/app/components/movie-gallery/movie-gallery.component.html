@@ -1,0 +1,16 @@
+<h3>Movie Gallery</h3>
+<div class="gallery">
+  <div
+    *ngFor="let movie of movies"
+    class="movie-card"
+    (click)="selectMovie(movie)"
+  >
+    <img [src]="movie.poster" [alt]="movie.title" class="movie-poster" />
+    <h4 class="movie-title">{{ movie.title }}</h4>
+  </div>
+</div>
+
+<app-movie-detail
+  class="movie-detail-component"
+  [movie]="selectedMovie"
+></app-movie-detail>
