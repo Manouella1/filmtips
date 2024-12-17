@@ -1,10 +1,17 @@
 import { defineConfig } from 'cypress'
 
+declare global {
+  namespace NodeJS {
+    interface ProcessEnv {
+      CYPRESS_baseUrl: string;
+    }
+  }
+}
 
 export default defineConfig({
 
   e2e: {
-    'baseUrl': 'http://localhost:4200'
+    baseUrl: process.env['CYPRESS_baseUrl']  || 'http://localhost:3000',
   },
 
 
