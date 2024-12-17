@@ -9,7 +9,7 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./movie-favorites.component.css'],
   imports: [FormsModule, CommonModule], // Importera CommonModule och FormsModule
 })
-export class MovieFavoritesComponent {
+export class FavoriteMoviesComponent {
   favoriteMovies: string[] = [];
   newMovieTitle: string = '';
 
