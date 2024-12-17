@@ -12,7 +12,8 @@
     "serve:ssr:frontend": "node dist/frontend/server/server.mjs",
     "e2e": "ng e2e",
     "cypress:open": "cypress open",
-    "cypress:run": "cypress run"
+    "cypress:run": "cypress run",
+    "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "private": true,
   "dependencies": {
