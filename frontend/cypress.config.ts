@@ -11,7 +11,7 @@ declare global {
 export default defineConfig({
 
   e2e: {
-    baseUrl: process.env['CYPRESS_baseUrl']  || 'http://localhost:3000',
+    baseUrl: process.env['CYPRESS_baseUrl']  || 'http://localhost:4201',
   },
 
 
