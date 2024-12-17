@@ -1,15 +1,14 @@
 import { Pool } from 'pg';
-import path from 'path';
+//import path from 'path';
 import dotenv from 'dotenv';
 
-dotenv.config({ path: path.join(__dirname, '../../.env') });
+dotenv.config();
 
 const pool = new Pool({
-    user: process.env.POSTGRES_USER,
-    host: process.env.POSTGRES_HOST,
-    database: process.env.POSTGRES_DB,
-    password: process.env.POSTGRES_PASSWORD,
-    port: parseInt(process.env.DB_PORT || '5432')
+    connectionString: process.env.PGURI,
+    ssl: {
+        rejectUnauthorized: false // för externa anslutningar som Render
+    }
 });
 
 export const connectDB = async (): Promise<void> => {
