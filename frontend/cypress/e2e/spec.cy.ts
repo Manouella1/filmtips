@@ -3,13 +3,13 @@ describe('My First Test', () => {
     cy.visit('/')
     cy.get ('.movie-list-title')
     .first()
-    .should('contain.text', 'Avatar');
+    .should('contain.text', 'Toy Story');
 
   })
 })
 describe('Integration Tests for Backend', () => {
   it('should fetch movies via GET request', () => {
-    cy.request('GET', '/api/movies').then((response) => {
+    cy.request('GET', 'http://localhost:3000/api/movies').then((response) => {
       expect(response.status).to.eq(200);
       expect(response.body).to.be.an('array');
       expect(response.body.length).to.be.greaterThan(0);
@@ -18,16 +18,16 @@ describe('Integration Tests for Backend', () => {
 
   it('should create a new movie via POST request', () => {
     const newMovie = {
-      title: 'Avatar',
+      title: 'Toy Story',
       description: 'A sci-fi epic on Pandora.',
       genre: 'Sci-Fi',
       rating: 8,
     };
 
-    cy.request('POST', '/api/movies', newMovie).then((response) => {
+    cy.request('POST', 'http://localhost:3000/api/movies', newMovie).then((response) => {
       expect(response.status).to.eq(201);
       expect(response.body).to.have.property('id');
-      expect(response.body.title).to.eq('Avatar');
+      expect(response.body.title).to.eq('Toy Story');
     });
   });
 });
@@ -53,7 +53,7 @@ describe('Movie List Tests', () => {
 
 // Testar att en film kan sskapas och visas
 it('should create a new movie and display it in the list', () => {
-  cy.intercept('POST', '/api/movies', {
+  cy.intercept('POST', 'http://localhost:3000/api/movies', {
     id: 3,
     title: 'The Matrix',
     description: 'A cyberpunk classic.',
@@ -61,7 +61,7 @@ it('should create a new movie and display it in the list', () => {
     rating: 10,
   }).as('createMovie');
 
-  cy.intercept('GET', '/api/movies', [
+  cy.intercept('GET', 'http://localhost:3000/api/movies', [
     {
       id: 1,
       title: 'Inception',

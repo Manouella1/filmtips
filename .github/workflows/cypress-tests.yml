@@ -21,13 +21,24 @@ jobs:
         with:
           node-version: 18
 
-      - name: Install dependencies
+      - name: Install dependencies (Frontend)
         working-directory: frontend
+        run: npm install
+
+      - name: Install dependencies (Backend)
+        working-directory: backend
         run: npm install
 
       - name: Build Angular app
         working-directory: frontend
         run: npm run build
+
+      - name: Start Backend server
+        working-directory: backend
+        run: npm run start &
+        env:
+          PGURI: ${{ secrets.PGURI }}
+          PORT: 3000
 
       - name: Start Angular server
         working-directory: frontend
@@ -41,4 +52,5 @@ jobs:
           working-directory: frontend
           build: npm run build
           start: npm run start
-          wait-on: "http://localhost:4200"
+          wait-on: "http://localhost:4200,http://localhost:3000"
+          wait-on-timeout: 120
