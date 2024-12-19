@@ -1,4 +1,4 @@
-import { MovieFavoritesComponent } from '../src/app/components/movie-favorites/movie-favorites.component';
+import { FavoriteMoviesComponent } from '../src/app/components/movie-favorites/movie-favorites.component';
 import { mount } from 'cypress/angular';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -10,7 +10,7 @@ import { CommonModule } from '@angular/common';
 
 describe('FavoriteMoviesComponent', () => {
   beforeEach(() => {
-    mount(MovieFavoritesComponent, {
+    mount(FavoriteMoviesComponent, {
       imports: [FormsModule, CommonModule], // Lägg till nödvändiga Angular-moduler
     });
   });
