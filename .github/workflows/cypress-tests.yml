@@ -13,26 +13,32 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # Check out repository
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      # Set up Node.js
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 18
 
+      # Install dependencies for the frontend
       - name: Install dependencies (Frontend)
         working-directory: frontend
         run: npm install
 
+      # Install dependencies for the backend
       - name: Install dependencies (Backend)
         working-directory: backend
         run: npm install
 
+      # Build the Angular application
       - name: Build Angular app
         working-directory: frontend
         run: npm run build
 
+      # Start backend server
       - name: Start Backend server
         working-directory: backend
         run: npm run start &
@@ -40,22 +46,34 @@ jobs:
           PGURI: ${{ secrets.PGURI }}
           PORT: 3000
 
+      # Wait for Backend server to be ready
       - name: Wait for Backend server
         run: npx wait-on http://localhost:3000
 
+      # Start Angular server
       - name: Start Angular server
         working-directory: frontend
         run: npm run start -- --port 4200 &
         env:
           CI: true
 
+      # Wait for Angular server to be ready
       - name: Wait for Angular server
         run: npx wait-on http://localhost:4200
 
+      # Ensure both servers are running and accessible
+      - name: Validate servers
+        run: |
+          curl -I http://localhost:4200
+          curl -I http://localhost:3000
+
+      # Run Cypress tests
       - name: Run Cypress tests
         working-directory: frontend
         uses: cypress-io/github-action@v6
         with:
-          start: npm run start
           wait-on: "http://localhost:4200,http://localhost:3000"
           wait-on-timeout: 120
+          config-file: cypress.json
+        env:
+          PGURI: ${{ secrets.PGURI }}
