@@ -69,7 +69,6 @@ jobs:
 
       # Run Cypress tests
       - name: Run Cypress tests
-        working-directory: frontend
         uses: cypress-io/github-action@v6
         with:
           wait-on: "http://localhost:4200,http://localhost:3000"
