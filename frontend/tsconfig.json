@@ -3,6 +3,11 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "paths": {
+      "@badeball/cypress-cucumber-preprocessor/*": [
+        "./node_modules/@badeball/cypress-cucumber-preprocessor/dist/subpath-entrypoints/*"
+      ]
+    },
     "outDir": "./dist/out-tsc",
     "strict": true,
     "noImplicitOverride": true,
@@ -16,6 +21,7 @@
     "moduleResolution": "bundler",
     "importHelpers": true,
     "target": "ES2022",
+    "allowSyntheticDefaultImports": true,
     "module": "ES2022"
   },
   "angularCompilerOptions": {

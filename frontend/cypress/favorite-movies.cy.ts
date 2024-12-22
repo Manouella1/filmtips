@@ -2,7 +2,7 @@ import { FavoriteMoviesComponent } from '../src/app/components/movie-favorites/m
 import { mount } from 'cypress/angular';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-
+import '@angular/compiler';
 // BDD beteende:
 // 	•	Given: Listan med favoritfilmer är tom.
 //	•	When: Användaren lägger till en film.

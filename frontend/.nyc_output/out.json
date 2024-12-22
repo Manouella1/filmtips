@@ -1,0 +1,119 @@
+{
+  "/Users/manouellapapadopoulos/Documents/JavaScript/TypeScript/filmtips/frontend/src/main.server.ts": {
+    "path": "/Users/manouellapapadopoulos/Documents/JavaScript/TypeScript/filmtips/frontend/src/main.server.ts",
+    "statementMap": {},
+    "fnMap": {},
+    "branchMap": {},
+    "s": {},
+    "f": {},
+    "b": {}
+  },
+  "/Users/manouellapapadopoulos/Documents/JavaScript/TypeScript/filmtips/frontend/src/server.ts": {
+    "path": "/Users/manouellapapadopoulos/Documents/JavaScript/TypeScript/filmtips/frontend/src/server.ts",
+    "statementMap": {},
+    "fnMap": {},
+    "branchMap": {},
+    "s": {},
+    "f": {},
+    "b": {}
+  },
+  "/Users/manouellapapadopoulos/Documents/JavaScript/TypeScript/filmtips/frontend/src/app/app.component.ts": {
+    "path": "/Users/manouellapapadopoulos/Documents/JavaScript/TypeScript/filmtips/frontend/src/app/app.component.ts",
+    "statementMap": {},
+    "fnMap": {},
+    "branchMap": {},
+    "s": {},
+    "f": {},
+    "b": {}
+  },
+  "/Users/manouellapapadopoulos/Documents/JavaScript/TypeScript/filmtips/frontend/src/app/app.config.server.ts": {
+    "path": "/Users/manouellapapadopoulos/Documents/JavaScript/TypeScript/filmtips/frontend/src/app/app.config.server.ts",
+    "statementMap": {},
+    "fnMap": {},
+    "branchMap": {},
+    "s": {},
+    "f": {},
+    "b": {}
+  },
+  "/Users/manouellapapadopoulos/Documents/JavaScript/TypeScript/filmtips/frontend/src/app/app.config.ts": {
+    "path": "/Users/manouellapapadopoulos/Documents/JavaScript/TypeScript/filmtips/frontend/src/app/app.config.ts",
+    "statementMap": {},
+    "fnMap": {},
+    "branchMap": {},
+    "s": {},
+    "f": {},
+    "b": {}
+  },
+  "/Users/manouellapapadopoulos/Documents/JavaScript/TypeScript/filmtips/frontend/src/app/app.routes.server.ts": {
+    "path": "/Users/manouellapapadopoulos/Documents/JavaScript/TypeScript/filmtips/frontend/src/app/app.routes.server.ts",
+    "statementMap": {},
+    "fnMap": {},
+    "branchMap": {},
+    "s": {},
+    "f": {},
+    "b": {}
+  },
+  "/Users/manouellapapadopoulos/Documents/JavaScript/TypeScript/filmtips/frontend/src/app/app.routes.ts": {
+    "path": "/Users/manouellapapadopoulos/Documents/JavaScript/TypeScript/filmtips/frontend/src/app/app.routes.ts",
+    "statementMap": {},
+    "fnMap": {},
+    "branchMap": {},
+    "s": {},
+    "f": {},
+    "b": {}
+  },
+  "/Users/manouellapapadopoulos/Documents/JavaScript/TypeScript/filmtips/frontend/src/app/models/movie.interface.ts": {
+    "path": "/Users/manouellapapadopoulos/Documents/JavaScript/TypeScript/filmtips/frontend/src/app/models/movie.interface.ts",
+    "statementMap": {},
+    "fnMap": {},
+    "branchMap": {},
+    "s": {},
+    "f": {},
+    "b": {}
+  },
+  "/Users/manouellapapadopoulos/Documents/JavaScript/TypeScript/filmtips/frontend/src/app/services/movie.service.ts": {
+    "path": "/Users/manouellapapadopoulos/Documents/JavaScript/TypeScript/filmtips/frontend/src/app/services/movie.service.ts",
+    "statementMap": {},
+    "fnMap": {},
+    "branchMap": {},
+    "s": {},
+    "f": {},
+    "b": {}
+  },
+  "/Users/manouellapapadopoulos/Documents/JavaScript/TypeScript/filmtips/frontend/src/app/components/movie-detail/movie-detail.component.ts": {
+    "path": "/Users/manouellapapadopoulos/Documents/JavaScript/TypeScript/filmtips/frontend/src/app/components/movie-detail/movie-detail.component.ts",
+    "statementMap": {},
+    "fnMap": {},
+    "branchMap": {},
+    "s": {},
+    "f": {},
+    "b": {}
+  },
+  "/Users/manouellapapadopoulos/Documents/JavaScript/TypeScript/filmtips/frontend/src/app/components/movie-favorites/movie-favorites.component.ts": {
+    "path": "/Users/manouellapapadopoulos/Documents/JavaScript/TypeScript/filmtips/frontend/src/app/components/movie-favorites/movie-favorites.component.ts",
+    "statementMap": {},
+    "fnMap": {},
+    "branchMap": {},
+    "s": {},
+    "f": {},
+    "b": {}
+  },
+  "/Users/manouellapapadopoulos/Documents/JavaScript/TypeScript/filmtips/frontend/src/app/components/movie-gallery/movie-gallery.component.ts": {
+    "path": "/Users/manouellapapadopoulos/Documents/JavaScript/TypeScript/filmtips/frontend/src/app/components/movie-gallery/movie-gallery.component.ts",
+    "statementMap": {},
+    "fnMap": {},
+    "branchMap": {},
+    "s": {},
+    "f": {},
+    "b": {}
+  },
+  "/Users/manouellapapadopoulos/Documents/JavaScript/TypeScript/filmtips/frontend/src/app/components/movie-list/movie-list.component.ts": {
+    "path": "/Users/manouellapapadopoulos/Documents/JavaScript/TypeScript/filmtips/frontend/src/app/components/movie-list/movie-list.component.ts",
+    "statementMap": {},
+    "fnMap": {},
+    "branchMap": {},
+    "s": {},
+    "f": {},
+    "b": {}
+  }
+}

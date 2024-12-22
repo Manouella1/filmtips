@@ -15,18 +15,34 @@
     "cypress:run": "cypress run",
     "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
+  "nyc": {
+    "extends": "@istanbuljs/nyc-config-typescript",
+    "all": true,
+    "reporter": [
+      "lcov",
+      "text-summary"
+    ],
+    "include": [
+      "src/**/*.ts"
+    ],
+    "exclude": [
+      "cypress/**/*",
+      "**/*.spec.ts",
+      "src/main.ts",
+      "src/polyfills.ts"
+    ]
+  },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^19.0.0",
-    "@angular/common": "^19.0.0",
-    "@angular/compiler": "^19.0.0",
-    "@angular/core": "^19.0.0",
-    "@angular/forms": "^19.0.0",
-    "@angular/platform-browser": "^19.0.0",
-    "@angular/platform-browser-dynamic": "^19.0.0",
-    "@angular/platform-server": "^19.0.0",
-    "@angular/router": "^19.0.0",
-    "@angular/ssr": "^19.0.1",
+    "@angular/animations": "^19.0.5",
+    "@angular/common": "^19.0.5",
+    "@angular/core": "^19.0.5",
+    "@angular/forms": "^19.0.5",
+    "@angular/platform-browser": "^19.0.5",
+    "@angular/platform-browser-dynamic": "^19.0.5",
+    "@angular/platform-server": "^19.0.5",
+    "@angular/router": "^19.0.5",
+    "@angular/ssr": "^19.0.6",
     "dotenv": "^16.4.7",
     "express": "^4.18.2",
     "path": "^0.12.7",
@@ -35,9 +51,10 @@
     "zone.js": "~0.15.0"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^19.0.1",
-    "@angular/cli": "^19.0.1",
-    "@angular/compiler-cli": "^19.0.0",
+    "@angular-devkit/build-angular": "^19.0.6",
+    "@angular/cli": "^19.0.6",
+    "@angular/compiler": "^19.0.5",
+    "@angular/compiler-cli": "^19.0.5",
     "@badeball/cypress-cucumber-preprocessor": "^21.0.3",
     "@bahmutov/cypress-code-coverage": "^2.7.2",
     "@bahmutov/cypress-esbuild-preprocessor": "^2.2.4",
@@ -53,9 +70,13 @@
     "@types/node": "^18.19.68",
     "@typescript-eslint/eslint-plugin": "^8.15.0",
     "@typescript-eslint/parser": "^8.15.0",
-    "cypress": "latest",
-    "esbuild": "^0.24.0",
+    "babel-loader": "^9.2.1",
+    "babel-plugin-istanbul": "^7.0.0",
+    "cypress": "^13.17.0",
+    "esbuild": "^0.24.2",
     "eslint": "^9.15.0",
+    "istanbul-lib-coverage": "^3.2.2",
+    "istanbul-lib-source-maps": "^5.0.6",
     "jasmine-core": "~5.4.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",

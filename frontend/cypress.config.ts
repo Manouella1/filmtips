@@ -1,27 +1,35 @@
-import { defineConfig } from 'cypress';
-//import preprocessor from '@badeball/cypress-cucumber-preprocessor';
-import createBundler from '@bahmutov/cypress-esbuild-preprocessor';
-import { addCucumberPreprocessorPlugin } from '@badeball/cypress-cucumber-preprocessor';
+// cypress.config.ts
+
+import { defineConfig } from "cypress";
+import codeCoverageTask from "@cypress/code-coverage/task";
+
+// We create minimal type aliases from the codeCoverageTask parameters
+// so we avoid "any" but don't rely on Cypress types that don't exist.
+type CypressOn = Parameters<typeof codeCoverageTask>[0];
+type CypressConfig = Parameters<typeof codeCoverageTask>[1];
 
 export default defineConfig({
   e2e: {
-    async setupNodeEvents(on, config) {
-      // Lägg till Cucumber-preprocessor-plugin
-      await addCucumberPreprocessorPlugin(on, config);
-
-      // Använd Esbuild-plugin
-      on('file:preprocessor', createBundler());
-
+    // Called when Cypress starts up, so we can register code coverage plugin
+    setupNodeEvents(on: CypressOn, config: CypressConfig) {
+      codeCoverageTask(on, config);
+      // Return the updated config object
       return config;
     },
-    specPattern: '**/*.{feature,cy.ts}',
-    baseUrl: 'http://localhost:4200',
+
+    // Replace with your local dev server
+    baseUrl: "http://localhost:4200",
+
+    // Where to find your .feature files (Cucumber, if you’re using that)
+    specPattern: "**/*.feature",
   },
+
   component: {
     devServer: {
-      framework: 'angular',
-      bundler: 'webpack',
+      framework: "angular",
+      bundler: "webpack",
     },
-    specPattern: '**/*.cy.ts',
+    // Where to find your component test specs
+    specPattern: "**/*.cy.ts",
   },
 });
