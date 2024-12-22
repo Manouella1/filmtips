@@ -13,7 +13,7 @@
     "e2e": "ng e2e",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
-    "coverage": "nyc report --reporter=text-lcov | coveralls"
+    "coverage": "nyc report --reporter=html --reporter=text-summary"
   },
   "nyc": {
     "extends": "@istanbuljs/nyc-config-typescript",
@@ -51,6 +51,7 @@
     "zone.js": "~0.15.0"
   },
   "devDependencies": {
+    "@angular-builders/custom-webpack": "^19.0.0-beta.0",
     "@angular-devkit/build-angular": "^19.0.6",
     "@angular/cli": "^19.0.6",
     "@angular/compiler": "^19.0.5",
@@ -64,6 +65,7 @@
     "@cypress/mount-utils": "^4.1.1",
     "@cypress/schematic": "^2.5.2",
     "@eslint/eslintrc": "^3.2.0",
+    "@istanbuljs/nyc-config-typescript": "^1.0.2",
     "@types/cucumber": "^6.0.1",
     "@types/express": "^4.17.17",
     "@types/jasmine": "~5.1.0",
@@ -72,6 +74,7 @@
     "@typescript-eslint/parser": "^8.15.0",
     "babel-loader": "^9.2.1",
     "babel-plugin-istanbul": "^7.0.0",
+    "coveralls": "^3.1.1",
     "cypress": "^13.17.0",
     "esbuild": "^0.24.2",
     "eslint": "^9.15.0",

@@ -40,17 +40,22 @@ jobs:
           PGURI: ${{ secrets.PGURI }}
           PORT: 3000
 
+      - name: Wait for Backend server
+        run: npx wait-on http://localhost:3000
+
       - name: Start Angular server
         working-directory: frontend
-        run: npm run start &
+        run: npm run start -- --port 4200 &
         env:
           CI: true
 
+      - name: Wait for Angular server
+        run: npx wait-on http://localhost:4200
+
       - name: Run Cypress tests
+        working-directory: frontend
         uses: cypress-io/github-action@v6
         with:
-          working-directory: frontend
-          build: npm run build
           start: npm run start
           wait-on: "http://localhost:4200,http://localhost:3000"
           wait-on-timeout: 120
