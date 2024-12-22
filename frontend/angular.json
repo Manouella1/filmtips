@@ -19,7 +19,7 @@
           "options": {
 
             "customWebpackConfig": {
-              "path": "./extra-webpack.config.ts"
+              "path": "./extra-webpack.config.js"
             },
             "outputPath": "dist/frontend",
             "index": "src/index.html",
