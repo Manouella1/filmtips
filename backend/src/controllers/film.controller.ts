@@ -10,9 +10,16 @@ import {
 
 export const getMovies = async (req: Request, res: Response): Promise<void> => {
     try {
-        const result = await pool.query<IMovieRecord>('SELECT * FROM movies ORDER BY id DESC');
-        const movies = result.rows.map(mapMovieRecord);
-        res.json(movies);
+        const result = await pool.query(
+            `
+            SELECT movies.id, movies.title, movies.description, genres.name AS genre, movies.rating
+            FROM movies
+            LEFT JOIN genres ON movies.genre_id = genres.id
+            ORDER BY movies.id DESC
+            `
+        );
+
+        res.json(result.rows);
     } catch (error) {
         console.error('Error fetching movies:', error);
         res.status(500).json({ error: 'Failed to fetch movies' });
@@ -21,21 +28,20 @@ export const getMovies = async (req: Request, res: Response): Promise<void> => {
 
 
 export const addMovie = async (req: Request, res: Response): Promise<void> => {
-    // Validera inkommande data
-    if (!isValidMovie(req.body)) {
+    const { title, description, genre_id, rating } = req.body;
+
+    if (!title || !rating || typeof rating !== 'number') {
         res.status(400).json({ error: 'Invalid movie data' });
         return;
     }
 
-    const movie: ICreateMovieDTO = req.body;
-
     try {
-        const result = await pool.query<IMovieRecord>(
-            'INSERT INTO movies (title, description, genre, rating) VALUES ($1, $2, $3, $4) RETURNING *',
-            [movie.title, movie.description, movie.genre, movie.rating] // Alla fält är nu REQUIRED
+        const result = await pool.query(
+            'INSERT INTO movies (title, description, genre_id, rating) VALUES ($1, $2, $3, $4) RETURNING *',
+            [title, description, genre_id, rating]
         );
 
-        res.status(201).json(mapMovieRecord(result.rows[0]));
+        res.status(201).json(result.rows[0]);
     } catch (error) {
         console.error('Error adding movie:', error);
         res.status(500).json({ error: 'Failed to add movie' });

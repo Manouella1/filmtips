@@ -1,21 +1,32 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { IReview } from '../models/review.interface';
+
+export interface Movie {
+  id: number;
+  title: string;
+}
+
+export interface Review {
+  movie_id: number;
+  reviewer_name: string;
+  review_text: string;
+  rating: number;
+}
 
 @Injectable({
   providedIn: 'root',
 })
-export class ReviewService {
-  private apiUrl = 'http://localhost:3000/reviews'; // Justera till din backend-URL
+export class MovieService {
+  private apiBaseUrl = 'http://localhost:3000/api/movies'
 
   constructor(private http: HttpClient) {}
 
-  getReviewsByMovieId(movieId: number): Observable<IReview[]> {
-    return this.http.get<IReview[]>(`${this.apiUrl}?movie_id=${movieId}`);
+  getMoviesWithReviews(): Observable<Movie[]> {
+    return this.http.get<Movie[]>(`${this.apiBaseUrl}/movies/reviews`);
   }
 
-  addReview(review: IReview): Observable<IReview> {
-    return this.http.post<IReview>(this.apiUrl, review);
+  addReview(review: Review): Observable<Review> {
+    return this.http.post<Review>(`${this.apiBaseUrl}/reviews`, review);
   }
 }

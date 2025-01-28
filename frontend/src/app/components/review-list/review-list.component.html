@@ -1,44 +1,60 @@
-<div class="review-list">
-  <h3>Reviews</h3>
-
+<div class="movies-container">
+  <h2>Movies with Reviews</h2>
   <ul>
-    <li *ngFor="let review of reviews">
-      <p>
-        <strong>{{ review.reviewer_name }}</strong> ({{ review.rating }}/5)
-      </p>
-      <p>{{ review.review_text }}</p>
+    <li *ngFor="let movie of movies" class="movie-item">
+      <div class="movie-details">
+        <strong>{{ movie.title }}</strong>
+        <button class="add-review-button" (click)="selectedMovieId = movie.id">
+          Add Review
+        </button>
+      </div>
     </li>
   </ul>
+</div>
 
-  <h4>Add Review</h4>
-  <form (ngSubmit)="createReview()">
-    <label for="reviewerName">Name:</label>
-    <input
-      id="reviewerName"
-      [(ngModel)]="newReview.reviewer_name"
-      name="reviewerName"
-      required
-    />
+<div class="review-form" *ngIf="selectedMovieId">
+  <h3>Add Review for "{{ getSelectedMovieTitle() }}"</h3>
+  <form (ngSubmit)="addReview()" class="review-form-content">
+    <div class="form-group">
+      <label for="reviewerName">Your Name:</label>
+      <input
+        id="reviewerName"
+        [(ngModel)]="newReview.reviewer_name"
+        name="reviewerName"
+        placeholder="Enter your name"
+        required
+      />
+    </div>
 
-    <label for="reviewText">Review:</label>
-    <textarea
-      id="reviewText"
-      [(ngModel)]="newReview.review_text"
-      name="reviewText"
-      required
-    ></textarea>
+    <div class="form-group">
+      <label for="reviewText">Review:</label>
+      <textarea
+        id="reviewText"
+        [(ngModel)]="newReview.review_text"
+        name="reviewText"
+        placeholder="Write your review here"
+        required
+      ></textarea>
+    </div>
 
-    <label for="rating">Rating (1-5):</label>
-    <input
-      id="rating"
-      type="number"
-      [(ngModel)]="newReview.rating"
-      name="rating"
-      min="1"
-      max="5"
-      required
-    />
+    <div class="form-group">
+      <label for="rating">Rating (1-5):</label>
+      <input
+        id="rating"
+        type="number"
+        [(ngModel)]="newReview.rating"
+        name="rating"
+        min="1"
+        max="5"
+        required
+      />
+    </div>
 
-    <button type="submit">Submit</button>
+    <div class="form-buttons">
+      <button type="submit" class="submit-button">Submit Review</button>
+      <button type="button" class="cancel-button" (click)="resetReviewForm()">
+        Cancel
+      </button>
+    </div>
   </form>
 </div>

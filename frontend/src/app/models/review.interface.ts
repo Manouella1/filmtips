@@ -1,7 +1,14 @@
 export interface IReview {
-  id: number;
+  id?: number; // Gör id valfritt
   movie_id: number;
   reviewer_name: string;
   review_text: string;
-  rating: number; // 1-5
+  rating: number;
+}
+export interface IMovie {
+  id: number;
+  title: string;
+  description?: string; // Gör valfri om de inte alltid finns
+  genre?: string;       // Gör valfri om de inte alltid finns
+  rating?: number;      // Gör valfri om de inte alltid finns
 }

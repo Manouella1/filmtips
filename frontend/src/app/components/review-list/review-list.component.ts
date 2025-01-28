@@ -1,70 +1,87 @@
 import { Component, OnInit } from '@angular/core';
-import { ReviewService } from '../../services/review.service';
+import { MovieService } from '../../services/review.service';
 import { IReview } from '../../models/review.interface';
-import { CommonModule } from '@angular/common';
+import { IMovie } from '../../models/movie.interface';
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-review-list',
+  selector: 'app-movie-reviews',
   templateUrl: './review-list.component.html',
-  // styleUrls: ['./review-list.component.css'],
+  styleUrls: ['./review-list.component.css'],
+  standalone: true,
   imports: [FormsModule, CommonModule],
 })
 export class ReviewListComponent implements OnInit {
-  reviews: IReview[] = [];
+  movies: IMovie[] = [];
+  selectedMovieId: number | null = null;
   newReview: IReview = {
-    id: 0,
     movie_id: 0,
     reviewer_name: '',
     review_text: '',
     rating: 0,
   };
 
-  constructor(private reviewService: ReviewService) {}
+  constructor(private movieService: MovieService) {}
 
   ngOnInit(): void {
-    this.fetchReviews(1); // Byt ut `1` med det aktuella film-ID:t vid behov
+    this.fetchMovies();
   }
 
   /**
-   * Hämtar recensioner för en specifik film.
-   * @param movieId Filmens ID vars recensioner ska hämtas.
+   * Hämta filmer med recensioner
    */
-  fetchReviews(movieId: number): void {
-    this.reviewService.getReviewsByMovieId(movieId).subscribe({
-      next: (data) => {
-        this.reviews = data;
+  fetchMovies(): void {
+    this.movieService.getMoviesWithReviews().subscribe({
+      next: (data: IMovie[]) => {
+        this.movies = data;
       },
-      error: (err) => console.error('Error fetching reviews:', err),
+      error: (err: unknown) => {
+        console.error('Error fetching movies with reviews:', err);
+      },
     });
   }
 
   /**
-   * Skapar en ny recension.
+   * Lägg till recension
    */
-  createReview(): void {
-    if (
-      this.newReview.reviewer_name.trim() &&
-      this.newReview.review_text.trim() &&
-      this.newReview.rating >= 1 &&
-      this.newReview.rating <= 5
-    ) {
-      this.reviewService.addReview(this.newReview).subscribe({
-        next: (createdReview) => {
-          console.log('Review created:', createdReview);
-          this.newReview = {
-            id: 0,
-            movie_id: this.newReview.movie_id,
-            reviewer_name: '',
-            review_text: '',
-            rating: 0,
-          };
-          this.fetchReviews(this.newReview.movie_id); // Uppdatera listan
+  addReview(): void {
+    if (this.selectedMovieId) {
+      this.newReview.movie_id = this.selectedMovieId;
+
+      this.movieService.addReview(this.newReview).subscribe({
+        next: () => {
+          console.log('Review added successfully');
+          this.fetchMovies(); // Uppdatera lista
+          this.resetReviewForm();
         },
-        error: (err) => console.error('Error creating review:', err),
+        error: (err: unknown) => {
+          console.error('Error adding review:', err);
+        },
       });
     } else {
-      console.error('Invalid review data');
+      console.error('No movie selected');
     }
+  }
+
+  /**
+   * Återställ formuläret
+   */
+  resetReviewForm(): void {
+    this.newReview = {
+      movie_id: 0,
+      reviewer_name: '',
+      review_text: '',
+      rating: 0,
+    };
+    this.selectedMovieId = null;
+  }
+
+  /**
+   * Hämta titel för vald film
+   */
+  getSelectedMovieTitle(): string | undefined {
+    const selectedMovie = this.movies.find((m) => m.id === this.selectedMovieId);
+    return selectedMovie?.title;
   }
 }
