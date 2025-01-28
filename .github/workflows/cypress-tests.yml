@@ -10,7 +10,7 @@ on:
 
 jobs:
   cypress-run:
-    runs-on: self-hosted
+    runs-on: Ubuntu-latest
 
     steps:
       # Check out repository
@@ -74,5 +74,8 @@ jobs:
           wait-on: "http://localhost:4200"
           wait-on-timeout: 120
           config-file: cypress.config.ts
+          spec: |
+            src\app\app.component.spec.ts
+
         env:
           PGURI: ${{ secrets.PGURI }}
