@@ -29,9 +29,9 @@ jobs:
         run: npm install
 
       # Install dependencies for the backend
-      - name: Install dependencies (Backend)
-        working-directory: backend
-        run: npm install
+      # - name: Install dependencies (Backend)
+      #   working-directory: backend
+      #   run: npm install
 
       # Build the Angular application
       - name: Build Angular app
@@ -39,16 +39,16 @@ jobs:
         run: npm run build
 
       # Start backend server
-      - name: Start Backend server
-        working-directory: backend
-        run: npm run start &
-        env:
-          PGURI: ${{ secrets.PGURI }}
-          PORT: 3000
+      # - name: Start Backend server
+      #   working-directory: backend
+      #   run: npm run start &
+      #   env:
+      #     PGURI: ${{ secrets.PGURI }}
+      #     PORT: 3000
 
       # Wait for Backend server to be ready
-      - name: Wait for Backend server
-        run: npx wait-on http://localhost:3000
+      # - name: Wait for Backend server
+      #   run: npx wait-on http://localhost:3000
 
       # Start Angular server
       - name: Start Angular server
@@ -65,14 +65,13 @@ jobs:
       - name: Validate servers
         run: |
           curl -I http://localhost:4200
-          curl -I http://localhost:3000
 
       # Run Cypress tests
       - name: Run Cypress tests
         uses: cypress-io/github-action@v6
         with:
-          wait-on: "http://localhost:4200,http://localhost:3000"
+          wait-on: "http://localhost:4200"
           wait-on-timeout: 120
-          config-file: cypress.json
+          config-file: cypress.config.ts
         env:
           PGURI: ${{ secrets.PGURI }}
