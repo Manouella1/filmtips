@@ -71,8 +71,6 @@ jobs:
         uses: cypress-io/github-action@v6
         with:
           working-directory: frontend
-          wait-on: "http://localhost:4200"
-          wait-on-timeout: 120
           config-file: cypress.config.ts
           spec: |
             src\app\app.component.spec.ts
