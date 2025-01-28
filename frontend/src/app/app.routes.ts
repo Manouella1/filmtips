@@ -10,6 +10,6 @@ export const routes: Routes = [
   { path: 'list', component: MovieGalleryComponent },
   { path: 'favorites', component: FavoriteMoviesComponent },
   { path: 'reviews', component: ReviewListComponent },
-
+//k
 
 ];
