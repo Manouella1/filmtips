@@ -68,9 +68,9 @@ jobs:
 
       # Run Cypress tests
       - name: Run Cypress tests
-        working-directory: frontend
         uses: cypress-io/github-action@v6
         with:
+          working-directory: frontend
           wait-on: "http://localhost:4200"
           wait-on-timeout: 120
           config-file: cypress.config.ts
