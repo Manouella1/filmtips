@@ -67,13 +67,6 @@ jobs:
           curl -I http://localhost:4200
 
       # Run Cypress tests
-      - name: Run Cypress tests
-        uses: cypress-io/github-action@v6
-        with:
-          working-directory: frontend
-          config-file: cypress.config.ts
-          spec: |
-            src\app\app.component.spec.ts
-
-        env:
-          PGURI: ${{ secrets.PGURI }}
+      - name: Run Cypress Component Tests
+        run: npx cypress run --component
+        working-directory: ./frontend
